@@ -1,0 +1,103 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.beryx.jlink' version '2.25.0'
+//    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group 'fr.mrqsdf'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.2'
+}
+
+sourceCompatibility = '21'
+targetCompatibility = '21'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    //mainModule = 'fr.mrqsdf.rtspscreenconnect'
+    mainClass = 'fr.mrqsdf.rtspscreenconnect.HelloApplication'
+    applicationDefaultJvmArgs = [
+            '--module-path "C:\\Users\\UDI\\javafx\\openjfx-21.0.6_windows-x64_bin-sdk\\javafx-sdk-21.0.6\\lib" ',
+            '--add-modules javafx.controls,javafx.fxml'
+    ]
+}
+
+javafx {
+    version = '21'
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
+}
+
+dependencies {
+    implementation('org.controlsfx:controlsfx:11.2.1')
+    implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('net.synedra:validatorfx:0.5.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('eu.hansolo:tilesfx:21.0.3') {
+        exclude(group: 'org.openjfx')
+    }
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    implementation('org.jcodec:jcodec-javase:0.2.5') {
+        // Exclure jcodec pour éviter que ses packages soient présents en double
+        exclude group: 'org.jcodec', module: 'jcodec'
+    }
+    implementation 'org.jcodec:jcodec:0.2.5'
+
+    implementation("org.bytedeco:javacv-platform:1.5.11")
+
+}
+
+test {
+    /*dependsOn shadowJar
+    doFirst {
+        // Remplace le classpath de test par celui du jar ombragé
+        classpath = files(shadowJar.archiveFile.get().asFile)
+    }*/
+}
+
+jlink {
+    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'app'
+    }
+}
+
+//shadowJar {
+//    archiveClassifier.set('')
+//    manifest {
+//        attributes 'Main-Class': 'fr.mrqsdf.rtspscreenconnect.HelloApplication'
+//    }
+//
+//    // On renomme les packages du module que l'on souhaite ombrager (par exemple jcodec)
+//    relocate 'org.jcodec.scale', 'fr.mrqsdf.shaded.org.jcodec.scale'
+//    relocate 'org.jcodec.common', 'fr.mrqsdf.shaded.org.jcodec.common'
+//}
+
+
+build {
+    manifest {
+        attributes 'Main-Class': 'fr.mrqsdf.rtspscreenconnect.HelloApplication'
+    }
+}
+//jpackage --type msi --app-version "1.0" --input . --dest . --main-jar .\RTSPScreenConnect.jar --main-class fr.mrqsdf.rtspscreenconnect.HelloApplication --module-path "C:\Users\UDI\javafx\openjfx-21.0.6_windows-x64_bin-sdk\javafx-sdk-21.0.6\lib" --add-modules javafx.controls,javafx.fxml --win-shortcut --win-menu
+jlinkZip {
+    group = 'distribution'
+}
