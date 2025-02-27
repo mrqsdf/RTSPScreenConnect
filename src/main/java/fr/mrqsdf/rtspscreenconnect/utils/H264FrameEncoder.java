@@ -15,17 +15,20 @@ public class H264FrameEncoder {
     private boolean primed = false;
     private int width = -1;
     private int height = -1;
-    private int frameCount = 0;  // compteur de frames
+    private int frameCount = 0;
+    // Taille du GOP : par exemple, 30 frames
+    private int gopSize = Data.fps / 5 / (Data.fps / 15);
 
     public H264FrameEncoder() {
         encoder = H264Encoder.createH264Encoder();
+        encoder.setKeyInterval(gopSize);
     }
 
     public byte[] encodeFrame(BufferedImage image) {
         // Convertir le BufferedImage en Picture en YUV420
         Picture picture = AWTUtil.fromBufferedImage(image, ColorSpace.YUV420J);
 
-        // Initialisation de la résolution
+        // Initialiser la résolution si nécessaire
         if (width == -1 || height == -1) {
             width = picture.getWidth();
             height = picture.getHeight();
@@ -34,31 +37,27 @@ public class H264FrameEncoder {
             height = picture.getHeight();
         }
 
-        // Forcer une I-frame périodiquement (ici toutes les 30 frames)
-        int i = Data.fps / 5;
-        if (frameCount % i == 0) {
+        // Forcer l'envoi d'une I-frame toutes les gopSize frames
+        if (frameCount % gopSize == 0) {
             primed = false;
         }
 
-        // Allouer un ByteBuffer pour recevoir la trame encodée
         ByteBuffer out = ByteBuffer.allocate(picture.getWidth() * picture.getHeight() * 5);
-
         VideoEncoder.EncodedFrame ef;
-
-        // Si l'encodeur n'est pas encore primé, envoyer une frame dummy pour initialiser les références
         if (!primed) {
+            // La première frame (ou après réinitialisation) sera une I-frame
             ef = encoder.encodeFrame(picture, out);
             primed = true;
         } else {
             ef = encoder.encodeFrame(picture, out);
         }
 
-        ByteBuffer encodedData = ef.getData();  // Récupère le ByteBuffer contenant les données encodées
-
-        // Extraire les données du ByteBuffer
+        ByteBuffer encodedData = ef.getData();
         byte[] data = new byte[encodedData.remaining()];
         encodedData.get(data);
         frameCount++;
         return data;
     }
 }
+
+

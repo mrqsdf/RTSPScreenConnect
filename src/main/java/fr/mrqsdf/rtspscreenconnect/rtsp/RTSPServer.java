@@ -24,6 +24,8 @@ public class RTSPServer extends Thread {
     private volatile boolean playActive = false;
     private ServerSocket rtspServerSocket;
 
+    public boolean running = true;
+
     public RTSPServer(int rtspPort, int screenId, ScreenCutter cutter) throws Exception {
         this.rtspPort = rtspPort;
         this.screenId = screenId;
@@ -35,7 +37,10 @@ public class RTSPServer extends Thread {
 
     @Override
     public void interrupt() {
-        if (currentSender != null) currentSender.interrupt();
+        if (currentSender != null) {
+            currentSender.interrupt();
+            currentSender = null;
+        }
         if (rtspServerSocket != null) {
             try {
                 rtspServerSocket.close();
@@ -43,6 +48,7 @@ public class RTSPServer extends Thread {
                 e.printStackTrace();
             }
         }
+        running = false;
         super.interrupt();
     }
 
@@ -50,23 +56,26 @@ public class RTSPServer extends Thread {
     public void run() {
         // Démarrer le thread de capture/encodage pour ce flux.
         new Thread(() -> {
-            while (true) {
+            while (running) {
                 try {
-                    BufferedImage frame = screenCutter.cutScreen();
-                    byte[] encodedFrame = encoder.encodeFrame(frame);
-                    if (encodedFrame != null && encodedFrame.length > 0) {
-                        // Log de vérification de frame
-                        //System.out.println("Screen " + screenId + " : frame encodée, taille = " + encodedFrame.length);
-                        // Si la session PLAY est active et qu'un expéditeur est défini, envoyer la frame.
-                        if (playActive && currentSender != null) {
-                            currentSender.queueFrame(encodedFrame);
+                    if (currentSender != null){
+                        BufferedImage frame = screenCutter.cutScreen();
+                        byte[] encodedFrame = encoder.encodeFrame(frame);
+                        if (encodedFrame != null && encodedFrame.length > 0) {
+                            // Log de vérification de frame
+                            //System.out.println("Screen " + screenId + " : frame encodée, taille = " + encodedFrame.length);
+                            // Si la session PLAY est active et qu'un expéditeur est défini, envoyer la frame.
+                            if (playActive && currentSender != null) {
+                                currentSender.queueFrame(encodedFrame);
+                            }
+                        } else {
+                            System.out.println("Screen " + screenId + " : frame vide");
                         }
-                    } else {
-                        System.out.println("Screen " + screenId + " : frame vide");
+                        Thread.sleep(1000/ Data.fps); // environ 30 FPS
                     }
-                    Thread.sleep(1000/ Data.fps); // environ 30 FPS
                 } catch (Exception e) {
                     e.printStackTrace();
+                    running = false;
                 }
             }
         }).start();
@@ -74,13 +83,22 @@ public class RTSPServer extends Thread {
         // Démarrer le serveur RTSP pour gérer les requêtes des clients.
         try (ServerSocket rtspServerSocket = new ServerSocket(rtspPort)) {
             System.out.println("RTSP Server (unicast) pour l'écran " + screenId + " démarré sur le port " + rtspPort);
-            while (!Thread.interrupted()) {
+            while (running) {
                 this.rtspServerSocket = rtspServerSocket;
                 if (!rtspServerSocket.isClosed()){
-                    Socket clientSocket = rtspServerSocket.accept();
-                    System.out.println("Client connecté sur l'écran " + screenId);
-                    handleClient(clientSocket);
+                    try {
+                        Socket clientSocket = rtspServerSocket != null ? rtspServerSocket.accept() : null;
+                        if (clientSocket == null) break;
+                        System.out.println("Client connecté sur l'écran " + screenId);
+                        handleClient(clientSocket);
+                    } catch (SocketException se) {
+                        // Socket fermé, on sort de la boucle.
+                        System.out.println("ServerSocket fermé, arrêt du serveur RTSP pour l'écran " + screenId);
+                        running = false;
+                        break;
+                    }
                 }
+
             }
         } catch (Exception e) {
             e.printStackTrace();

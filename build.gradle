@@ -36,11 +36,10 @@ application {
 
 javafx {
     version = '21'
-    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
-    implementation('org.controlsfx:controlsfx:11.2.1')
     implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
         exclude(group: 'org.openjfx')
     }
@@ -51,16 +50,11 @@ dependencies {
         exclude(group: 'org.openjfx')
     }
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-
     implementation('org.jcodec:jcodec-javase:0.2.5') {
         // Exclure jcodec pour éviter que ses packages soient présents en double
         exclude group: 'org.jcodec', module: 'jcodec'
     }
     implementation 'org.jcodec:jcodec:0.2.5'
-
-    implementation("org.bytedeco:javacv-platform:1.5.11")
 
 }
 
@@ -79,18 +73,6 @@ jlink {
         name = 'app'
     }
 }
-
-//shadowJar {
-//    archiveClassifier.set('')
-//    manifest {
-//        attributes 'Main-Class': 'fr.mrqsdf.rtspscreenconnect.HelloApplication'
-//    }
-//
-//    // On renomme les packages du module que l'on souhaite ombrager (par exemple jcodec)
-//    relocate 'org.jcodec.scale', 'fr.mrqsdf.shaded.org.jcodec.scale'
-//    relocate 'org.jcodec.common', 'fr.mrqsdf.shaded.org.jcodec.common'
-//}
-
 
 build {
     manifest {

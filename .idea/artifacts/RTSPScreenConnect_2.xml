@@ -1,0 +1,168 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="RTSPScreenConnect 2">
+    <output-path>$PROJECT_DIR$/out/artifacts/RTSPScreenConnect_2</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="fr.mrqsdf.rtspscreenconnect.RtspScreenConnect" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="msi" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="RTSPScreenConnect.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="RTSPScreenConnect.main" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus/2.3.1-1.5.9/af6a8e3a14873b7de80d632e06eb0b3c9cc00c86/artoolkitplus-2.3.1-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/ffmpeg/7.1-1.5.11/85302b8049f9c5869bf7b61307f39c5b53069339/ffmpeg-7.1-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture-platform/2.13.3.31-1.5.9/18253937e77a52026bd87db432a1d4900e511763/flycapture-platform-2.13.3.31-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacpp-platform/1.5.11/3be0f5396552ec336fffd83f2042aacaa02248d1/javacpp-platform-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacpp/1.5.11/b1245824a612462e16021b26aa1004e2b69aead0/javacpp-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2/2.53.1-1.5.9/3123b090f70551bbf78bb973b2ee6d555c2efe5e/librealsense2-2.53.1-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect2/0.2.0-1.5.9/2008343f5ea8bbbf1d516bf630a2656c91711a9/libfreenect2-0.2.0-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jcodec/jcodec/0.2.5/b1968a3dbf46aa5ac9630ce9e3cbf67c4940d08/jcodec-0.2.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/21/8083d97ea236079c82cf8e3463b62990340346d4/javafx-graphics-21-win.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect2/0.2.0-1.5.9/fe018286861aca25a55604ebda28d08d7a1e2785/libfreenect2-0.2.0-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.controlsfx/controlsfx/11.2.1/e0f2568b8ee6e7a1639741f21b0024277ecbb7a7/controlsfx-11.2.1.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2/2.53.1-1.5.9/4c33bb1987aa748c8348957f2bc83182d1a229ab/librealsense2-2.53.1-1.5.9-windows-x86.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect/0.5.7-1.5.9/2a20883b37c2ee1e166cbe3f3d66f4ac0d413134/libfreenect-0.5.7-1.5.9-windows-x86.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus/2.3.1-1.5.9/63cd2f8e29ad476e1adc0370312546eac1bc97a6/artoolkitplus-2.3.1-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo.fx/countries/21.0.3/847fee81874e600503a2ae702ee20347e528237/countries-21.0.3.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.dlsc.formsfx/formsfx-core/11.6.0/dd14a71601781f316a3d5259af549c37b4b3b311/formsfx-core-11.6.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacpp/1.5.11/76a0197853ab5e2d3643804e62f9018053750ddf/javacpp-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense/1.12.4-1.5.9/1950b2bb729af2d9c2dbf424b419716b1509f2db/librealsense-1.12.4-1.5.9-windows-x86.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/21/f290138dcff0ee5679eebd2096f29dfa1f7563c6/javafx-controls-21.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/opencv/4.10.0-1.5.11/2a4ad7ad335cd22ab09fe18bdf4c60d3bad867cb/opencv-4.10.0-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect2-platform/0.2.0-1.5.9/7c30d421f2e679119120c835ad73a8a8a2913539/libfreenect2-platform-0.2.0-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacv-platform/1.5.11/4b41f4be61b58256c425c2e02714a795c038991a/javacv-platform-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture/2.13.3.31-1.5.9/aefe6bb84ee84669117b1f8d2b0ecafd6e666383/flycapture-2.13.3.31-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.synedra/validatorfx/0.5.0/8eaa2e85f8f4370dc2ecd050c5627b064cb3ec74/validatorfx-0.5.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus-platform/2.3.1-1.5.9/2a0b81d30cb1e17eb3ae9d7af3fe8f53b8a27735/artoolkitplus-platform-2.3.1-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture/2.13.3.31-1.5.9/176902709475936e5d187768c47fbd6a023e48d8/flycapture-2.13.3.31-1.5.9-windows-x86.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-media/21/f5e89e981be5c3c6f316b6f8b7b49686cd7c6d58/javafx-media-21-win.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo.fx/heatmap/21.0.3/416bb5189bcc79a4adb416226691504ba9aaf496/heatmap-21.0.3.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput/0.200-1.5.9/65c40cb15d7ce1ab64a1eda96dacbd0ad1e07c7b/videoinput-0.200-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394/2.2.6-1.5.9/fa32142e37d3be048b64fb52ca51deca6d5de667/libdc1394-2.2.6-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jcodec/jcodec-javase/0.2.5/924491879d101f60f659c0a26562b3c232f1c59d/jcodec-javase-0.2.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2-platform/2.53.1-1.5.9/8bd869a086ca856d787806f0927966195d328d9a/librealsense2-platform-2.53.1-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394/2.2.6-1.5.9/e5be5dc0f4e6c786adbe2ae17ed0044df86d615b/libdc1394-2.2.6-1.5.9-windows-x86.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense-platform/1.12.4-1.5.9/1596fc41fe524b00f9e825f8a0bf103469fe51f5/librealsense-platform-1.12.4-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/opencv/4.10.0-1.5.11/16a0fbc18bbc3d25d9c1496d4e84f9fddc7d0dc3/opencv-4.10.0-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/21/f8d0163c8bf9cffdcf2eac163446ea550b3051ca/javafx-graphics-21.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394-platform/2.2.6-1.5.9/72f5c0340514f89601bdac20304ce7ccf686b6c5/libdc1394-platform-2.2.6-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense/1.12.4-1.5.9/27fb41a9d834522fb6d3acd56defbe56ccfb45e1/librealsense-1.12.4-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/openblas/0.3.28-1.5.11/88092a82318819af79499f2e3a05aa2432086dbd/openblas-0.3.28-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacv/1.5.11/8bcc9af0d9995080960c061edcfd6da9be84b0b5/javacv-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect-platform/0.5.7-1.5.9/c757108e09de1a87802637919e49b5500589630f/libfreenect-platform-0.5.7-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/21/76e295d84578a3d9688e092aae3f2ff1cf3e83a9/javafx-controls-21-win.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/opencv-platform/4.10.0-1.5.11/359538d58a6971ce50d150cfd709a6f26a0b01cb/opencv-platform-4.10.0-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394/2.2.6-1.5.9/d82e9b05c5b4c2fd4a70b9c95ecdaf53cd7f672d/libdc1394-2.2.6-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput/0.200-1.5.9/296ef2dc4f171920b3c8dc50efb9db6e915a1bd2/videoinput-0.200-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect/0.5.7-1.5.9/d2de417f6b540cfe8496f8240bad2467e84b56a0/libfreenect-0.5.7-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2/2.53.1-1.5.9/fe3ea25e1f6991a68e51c5ddcf8e9a6005efe553/librealsense2-2.53.1-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-swing/21/85c12ff6018b55276d3fef2bc83751ebfe3d58e5/javafx-swing-21-win.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/tesseract/5.5.0-1.5.11/e79178c2e597ea6f8caa3f17cdb67b138eaf04f3/tesseract-5.5.0-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/leptonica/1.85.0-1.5.11/845b7104a67fddcc5102ac5f476973ae61ca770f/leptonica-1.85.0-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/21/a7e334fbb619859e1010cad06ddcf16e774c87a0/javafx-base-21-win.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo/toolbox/21.0.5/b0fc9f2e9a0c61f078c45664d1951690a03dbb3e/toolbox-21.0.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/21/be7576df67c204d6d3f9c6c5d4db4e268ff22ff2/javafx-base-21.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/leptonica/1.85.0-1.5.11/75921aa50cf7fe946afad7cc6b9b0e139d2cf438/leptonica-1.85.0-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/openblas/0.3.28-1.5.11/ad4209e2a05042830b04d0b35378dccf21fe59ad/openblas-0.3.28-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-web/21/f53cab2e01c28dd3a26d250145e1ddc86fcf125a/javafx-web-21-win.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/tesseract-platform/5.5.0-1.5.11/d7a4808a307cd7595ac2063d1aa0670caf7c8911/tesseract-platform-5.5.0-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput/0.200-1.5.9/61dcd5e7316e858496f73b1d5957babff6e87a8a/videoinput-0.200-1.5.9-windows-x86.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/ffmpeg/7.1-1.5.11/9704bf6e3ba57d8984fea5eaa0221cf049ec90d4/ffmpeg-7.1-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo/toolboxfx/21.0.3/83dfcdf77277d7ac91c352d18e1f72b07e8834df/toolboxfx-21.0.3.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense/1.12.4-1.5.9/3ea18855380a5d528160c583e485491e7e8bdd47/librealsense-1.12.4-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect/0.5.7-1.5.9/16c037cd4f9e9f35a8e88fea29979e96b711f6ff/libfreenect-0.5.7-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/tesseract/5.5.0-1.5.11/e448786eccec591fcf28f4804988df3888594281/tesseract-5.5.0-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/ffmpeg-platform/7.1-1.5.11/b31abc689e758c771f6d945118f38ea234f84181/ffmpeg-platform-7.1-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture/2.13.3.31-1.5.9/c653e61d46ebe5a5c0e71c17681f126320422f4/flycapture-2.13.3.31-1.5.9.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo/tilesfx/21.0.3/e81280bd504d93df331d7850a66e0dcfbe71b3aa/tilesfx-21.0.3.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/21/4a1cd270e1ae03ae73110eb68622afd457c6f903/javafx-fxml-21-win.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/openblas-platform/0.3.28-1.5.11/f08d1c50ba304328962f9e6e9af6b8dbd6618c5d/openblas-platform-0.3.28-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/leptonica-platform/1.85.0-1.5.11/e0307cadb6ed171f8c76eb2dbe1d97dbfc5b64ff/leptonica-platform-1.85.0-1.5.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus/2.3.1-1.5.9/5a0d26b1db496fa0b0f11ab9607e0a8be8854dba/artoolkitplus-2.3.1-1.5.9-windows-x86.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-media/21/7767ab6303b3ebae213a0064ffd941ade8a6f92a/javafx-media-21.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput-platform/0.200-1.5.9/cdd2794ec4b99530a95bbcce4d3d7244780234b9/videoinput-platform-0.200-1.5.9.jar" path-in-jar="/" />
+      </element>
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.dlsc.formsfx/formsfx-core/11.6.0/dd14a71601781f316a3d5259af549c37b4b3b311/formsfx-core-11.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo.fx/countries/21.0.3/847fee81874e600503a2ae702ee20347e528237/countries-21.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo.fx/heatmap/21.0.3/416bb5189bcc79a4adb416226691504ba9aaf496/heatmap-21.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo/tilesfx/21.0.3/e81280bd504d93df331d7850a66e0dcfbe71b3aa/tilesfx-21.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo/toolbox/21.0.5/b0fc9f2e9a0c61f078c45664d1951690a03dbb3e/toolbox-21.0.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/eu.hansolo/toolboxfx/21.0.3/83dfcdf77277d7ac91c352d18e1f72b07e8834df/toolboxfx-21.0.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.synedra/validatorfx/0.5.0/8eaa2e85f8f4370dc2ecd050c5627b064cb3ec74/validatorfx-0.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus-platform/2.3.1-1.5.9/2a0b81d30cb1e17eb3ae9d7af3fe8f53b8a27735/artoolkitplus-platform-2.3.1-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus/2.3.1-1.5.9/af6a8e3a14873b7de80d632e06eb0b3c9cc00c86/artoolkitplus-2.3.1-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus/2.3.1-1.5.9/5a0d26b1db496fa0b0f11ab9607e0a8be8854dba/artoolkitplus-2.3.1-1.5.9-windows-x86.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/artoolkitplus/2.3.1-1.5.9/63cd2f8e29ad476e1adc0370312546eac1bc97a6/artoolkitplus-2.3.1-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/ffmpeg-platform/7.1-1.5.11/b31abc689e758c771f6d945118f38ea234f84181/ffmpeg-platform-7.1-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/ffmpeg/7.1-1.5.11/9704bf6e3ba57d8984fea5eaa0221cf049ec90d4/ffmpeg-7.1-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/ffmpeg/7.1-1.5.11/85302b8049f9c5869bf7b61307f39c5b53069339/ffmpeg-7.1-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture-platform/2.13.3.31-1.5.9/18253937e77a52026bd87db432a1d4900e511763/flycapture-platform-2.13.3.31-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture/2.13.3.31-1.5.9/c653e61d46ebe5a5c0e71c17681f126320422f4/flycapture-2.13.3.31-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture/2.13.3.31-1.5.9/176902709475936e5d187768c47fbd6a023e48d8/flycapture-2.13.3.31-1.5.9-windows-x86.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/flycapture/2.13.3.31-1.5.9/aefe6bb84ee84669117b1f8d2b0ecafd6e666383/flycapture-2.13.3.31-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacpp-platform/1.5.11/3be0f5396552ec336fffd83f2042aacaa02248d1/javacpp-platform-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacpp/1.5.11/76a0197853ab5e2d3643804e62f9018053750ddf/javacpp-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacpp/1.5.11/b1245824a612462e16021b26aa1004e2b69aead0/javacpp-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacv-platform/1.5.11/4b41f4be61b58256c425c2e02714a795c038991a/javacv-platform-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/javacv/1.5.11/8bcc9af0d9995080960c061edcfd6da9be84b0b5/javacv-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/leptonica-platform/1.85.0-1.5.11/e0307cadb6ed171f8c76eb2dbe1d97dbfc5b64ff/leptonica-platform-1.85.0-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/leptonica/1.85.0-1.5.11/845b7104a67fddcc5102ac5f476973ae61ca770f/leptonica-1.85.0-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/leptonica/1.85.0-1.5.11/75921aa50cf7fe946afad7cc6b9b0e139d2cf438/leptonica-1.85.0-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394-platform/2.2.6-1.5.9/72f5c0340514f89601bdac20304ce7ccf686b6c5/libdc1394-platform-2.2.6-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394/2.2.6-1.5.9/fa32142e37d3be048b64fb52ca51deca6d5de667/libdc1394-2.2.6-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394/2.2.6-1.5.9/e5be5dc0f4e6c786adbe2ae17ed0044df86d615b/libdc1394-2.2.6-1.5.9-windows-x86.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libdc1394/2.2.6-1.5.9/d82e9b05c5b4c2fd4a70b9c95ecdaf53cd7f672d/libdc1394-2.2.6-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect-platform/0.5.7-1.5.9/c757108e09de1a87802637919e49b5500589630f/libfreenect-platform-0.5.7-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect2-platform/0.2.0-1.5.9/7c30d421f2e679119120c835ad73a8a8a2913539/libfreenect2-platform-0.2.0-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect2/0.2.0-1.5.9/2008343f5ea8bbbf1d516bf630a2656c91711a9/libfreenect2-0.2.0-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect2/0.2.0-1.5.9/fe018286861aca25a55604ebda28d08d7a1e2785/libfreenect2-0.2.0-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect/0.5.7-1.5.9/16c037cd4f9e9f35a8e88fea29979e96b711f6ff/libfreenect-0.5.7-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect/0.5.7-1.5.9/2a20883b37c2ee1e166cbe3f3d66f4ac0d413134/libfreenect-0.5.7-1.5.9-windows-x86.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/libfreenect/0.5.7-1.5.9/d2de417f6b540cfe8496f8240bad2467e84b56a0/libfreenect-0.5.7-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense-platform/1.12.4-1.5.9/1596fc41fe524b00f9e825f8a0bf103469fe51f5/librealsense-platform-1.12.4-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2-platform/2.53.1-1.5.9/8bd869a086ca856d787806f0927966195d328d9a/librealsense2-platform-2.53.1-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2/2.53.1-1.5.9/3123b090f70551bbf78bb973b2ee6d555c2efe5e/librealsense2-2.53.1-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2/2.53.1-1.5.9/4c33bb1987aa748c8348957f2bc83182d1a229ab/librealsense2-2.53.1-1.5.9-windows-x86.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense2/2.53.1-1.5.9/fe3ea25e1f6991a68e51c5ddcf8e9a6005efe553/librealsense2-2.53.1-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense/1.12.4-1.5.9/27fb41a9d834522fb6d3acd56defbe56ccfb45e1/librealsense-1.12.4-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense/1.12.4-1.5.9/1950b2bb729af2d9c2dbf424b419716b1509f2db/librealsense-1.12.4-1.5.9-windows-x86.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/librealsense/1.12.4-1.5.9/3ea18855380a5d528160c583e485491e7e8bdd47/librealsense-1.12.4-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/openblas-platform/0.3.28-1.5.11/f08d1c50ba304328962f9e6e9af6b8dbd6618c5d/openblas-platform-0.3.28-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/openblas/0.3.28-1.5.11/88092a82318819af79499f2e3a05aa2432086dbd/openblas-0.3.28-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/openblas/0.3.28-1.5.11/ad4209e2a05042830b04d0b35378dccf21fe59ad/openblas-0.3.28-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/opencv-platform/4.10.0-1.5.11/359538d58a6971ce50d150cfd709a6f26a0b01cb/opencv-platform-4.10.0-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/opencv/4.10.0-1.5.11/16a0fbc18bbc3d25d9c1496d4e84f9fddc7d0dc3/opencv-4.10.0-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/opencv/4.10.0-1.5.11/2a4ad7ad335cd22ab09fe18bdf4c60d3bad867cb/opencv-4.10.0-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/tesseract-platform/5.5.0-1.5.11/d7a4808a307cd7595ac2063d1aa0670caf7c8911/tesseract-platform-5.5.0-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/tesseract/5.5.0-1.5.11/e448786eccec591fcf28f4804988df3888594281/tesseract-5.5.0-1.5.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/tesseract/5.5.0-1.5.11/e79178c2e597ea6f8caa3f17cdb67b138eaf04f3/tesseract-5.5.0-1.5.11-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput-platform/0.200-1.5.9/cdd2794ec4b99530a95bbcce4d3d7244780234b9/videoinput-platform-0.200-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput/0.200-1.5.9/296ef2dc4f171920b3c8dc50efb9db6e915a1bd2/videoinput-0.200-1.5.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput/0.200-1.5.9/61dcd5e7316e858496f73b1d5957babff6e87a8a/videoinput-0.200-1.5.9-windows-x86.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bytedeco/videoinput/0.200-1.5.9/65c40cb15d7ce1ab64a1eda96dacbd0ad1e07c7b/videoinput-0.200-1.5.9-windows-x86_64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.controlsfx/controlsfx/11.2.1/e0f2568b8ee6e7a1639741f21b0024277ecbb7a7/controlsfx-11.2.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jcodec/jcodec-javase/0.2.5/924491879d101f60f659c0a26562b3c232f1c59d/jcodec-javase-0.2.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jcodec/jcodec/0.2.5/b1968a3dbf46aa5ac9630ce9e3cbf67c4940d08/jcodec-0.2.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/21/be7576df67c204d6d3f9c6c5d4db4e268ff22ff2/javafx-base-21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/21/a7e334fbb619859e1010cad06ddcf16e774c87a0/javafx-base-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/21/f290138dcff0ee5679eebd2096f29dfa1f7563c6/javafx-controls-21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/21/76e295d84578a3d9688e092aae3f2ff1cf3e83a9/javafx-controls-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/21/4a1cd270e1ae03ae73110eb68622afd457c6f903/javafx-fxml-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/21/f8d0163c8bf9cffdcf2eac163446ea550b3051ca/javafx-graphics-21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/21/8083d97ea236079c82cf8e3463b62990340346d4/javafx-graphics-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-media/21/7767ab6303b3ebae213a0064ffd941ade8a6f92a/javafx-media-21.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-media/21/f5e89e981be5c3c6f316b6f8b7b49686cd7c6d58/javafx-media-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-swing/21/85c12ff6018b55276d3fef2bc83751ebfe3d58e5/javafx-swing-21-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-web/21/f53cab2e01c28dd3a26d250145e1ddc86fcf125a/javafx-web-21-win.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

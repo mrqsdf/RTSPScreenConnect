@@ -43,6 +43,7 @@ public class ScreenStreamer {
     }
 
     public static void stop() {
+        System.out.println("Arrêt des serveurs RTSP");
         for (RTSPServer server : servers) {
             if (server != null) {
                 server.interrupt();
@@ -50,6 +51,7 @@ public class ScreenStreamer {
         }
         rtsps.clear();
         Data.data.clear();
+
     }
 
     public static List<String > getRtspList() {

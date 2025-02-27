@@ -12,13 +12,20 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import jdk.jfr.consumer.RecordedEvent;
 
 public class RtspScreenConnect extends Application {
 
     private static boolean started = false;
+    private static RtspScreenConnect instance;
+
+    public static RtspScreenConnect getInstance() {
+        return instance;
+    }
 
     @Override
     public void start(Stage stage) {
+        instance = this;
         Data.root = new BorderPane();
         Data.scene = new Scene(Data.root, 640, 360);
 
@@ -61,6 +68,11 @@ public class RtspScreenConnect extends Application {
         stage.setScene(Data.scene);
         stage.setTitle("RTSP Screen Connect");
         stage.show();
+
+        stage.setOnCloseRequest(e -> {
+            ScreenStreamer.stop();
+            System.exit(0);
+        });
     }
 
     public static void main(String[] args) {

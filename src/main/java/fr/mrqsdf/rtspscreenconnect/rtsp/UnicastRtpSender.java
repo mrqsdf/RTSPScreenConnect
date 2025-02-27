@@ -121,6 +121,7 @@ public class UnicastRtpSender extends Thread {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                running = false;
             }
         }
     }
