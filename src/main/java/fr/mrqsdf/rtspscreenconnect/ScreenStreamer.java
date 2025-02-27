@@ -44,6 +44,9 @@ public class ScreenStreamer {
 
     public static void stop() {
         System.out.println("Arrêt des serveurs RTSP");
+        if (servers == null) {
+            return;
+        }
         for (RTSPServer server : servers) {
             if (server != null) {
                 server.interrupt();

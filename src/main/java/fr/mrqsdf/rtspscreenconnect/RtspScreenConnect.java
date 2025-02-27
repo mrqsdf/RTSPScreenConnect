@@ -34,6 +34,9 @@ public class RtspScreenConnect extends Application {
         fpsField.setText("15");
         fpsField.setMaxWidth(50);
 
+        label.setId("fps-label");
+        fpsField.setId("fps-field");
+
         GridPane grid = new GridPane();
         grid.add(label, 0, 0);
         grid.add(fpsField, 1, 0);
@@ -51,19 +54,26 @@ public class RtspScreenConnect extends Application {
                 button.setText("Stop");
             }
         });
+        button.setId("start-stop-button");
 
         Data.data = FXCollections.observableArrayList();
 
         ListView<String> listView = new ListView<>(Data.data);
+        listView.setId("list-view");
         Data.data.addAll(ScreenStreamer.getRtspList());
 
         Data.root.setRight(listView);
+        Data.root.setId("root-pane");
 
 
 
         VBox vbox = new VBox();
         vbox.getChildren().addAll(grid, button);
+        vbox.setId("center-box");
         Data.root.setCenter(vbox);
+
+        Data.scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
 
         stage.setScene(Data.scene);
         stage.setTitle("RTSP Screen Connect");
