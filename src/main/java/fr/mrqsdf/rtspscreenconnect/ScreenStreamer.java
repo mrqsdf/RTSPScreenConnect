@@ -16,7 +16,7 @@ public class ScreenStreamer {
 
     public static void main(String[] args) {
         // Récupérer le premier écran disponible
-        GraphicsDevice[] screens = ScreenCollector.getScreenDevices();
+        GraphicsDevice[] screens = Data.screens;
         if(screens.length == 0){
             System.out.println("Aucun écran détecté.");
             return;
@@ -25,6 +25,9 @@ public class ScreenStreamer {
         System.out.println("Adresse IP locale : " + localIP);
         servers = new RTSPServer[screens.length];
         for(int i = 0; i < screens.length; i++){
+            if (!Data.selectedScreens.isEmpty() && !Data.selectedScreens.contains(screens[i])) {
+                continue;
+            }
             int rtspPort = 5004 + 2 * i; // ports séquentiels : 5004, 5006, 5008, ...
             String rtsp = "rtsp://" + localIP + ":" + rtspPort + "/" + i;
             rtsps.add(rtsp);

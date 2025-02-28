@@ -25,6 +25,11 @@
     -fx-font-size: 14px;
 }
 
+#screen-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
 /* Style du champ de texte FPS */
 #fps-field {
     -fx-background-color: #3c3f41;
