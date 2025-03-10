@@ -2,21 +2,29 @@ package fr.mrqsdf.rtspscreenconnect;
 
 import fr.mrqsdf.rtspscreenconnect.resource.Data;
 import fr.mrqsdf.rtspscreenconnect.utils.ScreenCollector;
+import fr.mrqsdf.rtspscreenconnect.utils.ScreenCutter;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class RtspScreenConnect extends Application {
 
@@ -61,12 +69,31 @@ public class RtspScreenConnect extends Application {
         });
         button.setId("start-stop-button");
 
-        Image image = new Image(getClass().getResource("/images/screen.png").toExternalForm());
+        Image baseImage = new Image(getClass().getResource("/images/screen.png").toExternalForm());
         int row = 1;
         for (GraphicsDevice screen : Data.screens) {
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(100);
-            imageView.setFitHeight(100);
+            Canvas canvas = new Canvas(baseImage.getWidth(), baseImage.getHeight());
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+
+            gc.setGlobalAlpha(1);
+            gc.drawImage(baseImage, 0, 0);
+            BufferedImage screenImage = new ScreenCutter(screen).cutScreen(5935,3413);
+
+            WritableImage fxScreenImage = SwingFXUtils.toFXImage(screenImage, null);
+
+            gc.drawImage(fxScreenImage, 262, 272);
+
+            // appliqué le screenImage a l'image au coordonnée 262 272
+
+            // Utiliser SnapshotParameters pour conserver la transparence
+            SnapshotParameters params = new SnapshotParameters();
+            params.setFill(Color.TRANSPARENT);
+
+            WritableImage finalImage = canvas.snapshot(params, null);
+
+            ImageView imageView = new ImageView(finalImage);
+            imageView.setFitWidth(150);
+            imageView.setFitHeight(150);
 
             Label screenLabel = new Label("Écran : " + screen.getIDstring() + "    ");
             screenLabel.setId("screen-label");

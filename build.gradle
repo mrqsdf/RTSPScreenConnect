@@ -36,7 +36,7 @@ application {
 
 javafx {
     version = '21'
-    modules = ['javafx.controls', 'javafx.fxml']
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.swing']
 }
 
 dependencies {
@@ -49,6 +49,9 @@ dependencies {
     implementation('eu.hansolo:tilesfx:21.0.3') {
         exclude(group: 'org.openjfx')
     }
+    //swing javafx
+    implementation("org.openjfx:javafx-swing:21.0.6")
+
 
     implementation('org.jcodec:jcodec-javase:0.2.5') {
         // Exclure jcodec pour éviter que ses packages soient présents en double

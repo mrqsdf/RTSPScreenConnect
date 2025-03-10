@@ -1,30 +1,29 @@
 package fr.mrqsdf.rtspscreenconnect.rtsp;
 
 import fr.mrqsdf.rtspscreenconnect.resource.Data;
-
-import java.net.*;
+import java.io.DataOutputStream;
+import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class UnicastRtpSender extends Thread implements RtspSender {
-    private DatagramSocket socket;
-    private InetAddress clientAddress;
-    private int clientPort;
+public class TcpRtpSender extends Thread implements RtspSender {
+    private DataOutputStream outStream;
+    private int rtpChannel;
     private int sequenceNumber = 0;
     private long timestamp = 0;
     private BlockingQueue<byte[]> frameQueue = new LinkedBlockingQueue<>();
-    // Taille maximale du payload UDP (en octets). Ajustez selon le MTU (par exemple, 1400)
+    // Taille maximale du payload TCP pour fragmentation (similaire à UDP)
     private final int MAX_PAYLOAD = 1400;
-
     private boolean running = true;
 
-    public UnicastRtpSender(String clientAddress, int clientPort) throws Exception {
-        socket = new DatagramSocket();
-        this.clientAddress = InetAddress.getByName(clientAddress);
-        this.clientPort = clientPort;
+    public TcpRtpSender(Socket clientSocket, int rtpChannel) throws Exception {
+        // On utilise directement le flux de sortie du clientSocket
+        this.outStream = new DataOutputStream(clientSocket.getOutputStream());
+        this.rtpChannel = rtpChannel;
     }
 
+    @Override
     public void queueFrame(byte[] encodedFrame) {
         frameQueue.offer(encodedFrame);
     }
@@ -36,34 +35,40 @@ public class UnicastRtpSender extends Thread implements RtspSender {
     }
 
     /**
-     * Construit un paquet RTP en préfixant le payload avec un en-tête RTP (12 octets).
-     * @param payload Le payload à envoyer.
-     * @param marker Si vrai, le marker bit est mis à 1.
-     * @return Le paquet RTP complet sous forme de tableau d'octets.
+     * Construit un paquet RTP en ajoutant l'en-tête RTP de 12 octets.
+     * Le marker est mis à 1 si c'est la fin d'une trame.
      */
     private byte[] createRtpPacket(byte[] payload, boolean marker) {
         byte[] packet = new byte[12 + payload.length];
-        // Version 2, pas de padding, pas d'extension, pas de CSRC
-        packet[0] = (byte) 0x80;
-        // Marker bit et payload type 96 (dynamique)
-        packet[1] = (byte) ((marker ? 0x80 : 0x00) | 96);
-        // Numéro de séquence
+        packet[0] = (byte) 0x80; // Version 2
+        packet[1] = (byte) ((marker ? 0x80 : 0x00) | 96); // Marker + payload type 96
         packet[2] = (byte) (sequenceNumber >> 8);
         packet[3] = (byte) (sequenceNumber & 0xFF);
-        // Timestamp (4 octets)
         packet[4] = (byte) (timestamp >> 24);
         packet[5] = (byte) (timestamp >> 16);
         packet[6] = (byte) (timestamp >> 8);
         packet[7] = (byte) (timestamp);
-        // SSRC (valeur fixe pour cet exemple)
         int ssrc = 12345678;
         packet[8] = (byte) (ssrc >> 24);
         packet[9] = (byte) (ssrc >> 16);
         packet[10] = (byte) (ssrc >> 8);
         packet[11] = (byte) (ssrc);
-        // Copier le payload
         System.arraycopy(payload, 0, packet, 12, payload.length);
         return packet;
+    }
+
+    /**
+     * Envoie un paquet RTP sur le flux TCP en mode interleaved.
+     * Format : 0x24, canal (1 octet), longueur (2 octets big endian), puis le paquet RTP.
+     */
+    private void sendInterleavedPacket(byte[] rtpPacket) throws Exception {
+        synchronized(outStream) {
+            outStream.writeByte(0x24);          // '$'
+            outStream.writeByte(rtpChannel);      // canal
+            outStream.writeShort(rtpPacket.length); // longueur du paquet RTP
+            outStream.write(rtpPacket);           // données RTP
+            outStream.flush();
+        }
     }
 
     @Override
@@ -71,54 +76,45 @@ public class UnicastRtpSender extends Thread implements RtspSender {
         while (running) {
             try {
                 byte[] encodedFrame = frameQueue.take();
-                // Si le paquet est suffisamment petit, l'envoyer directement
+                int timestampIncrement = 90000 / Data.fps;
                 if (encodedFrame.length <= MAX_PAYLOAD) {
-                    byte[] rtpPacket = createRtpPacket(encodedFrame, true); // marker true => fin de frame
-                    DatagramPacket packet = new DatagramPacket(rtpPacket, rtpPacket.length, clientAddress, clientPort);
-                    socket.send(packet);
+                    byte[] rtpPacket = createRtpPacket(encodedFrame, true);
+                    sendInterleavedPacket(rtpPacket);
                     sequenceNumber++;
-                    timestamp += 90000 / Data.fps;
+                    timestamp += timestampIncrement;
                 } else {
-                    // Fragmenter la trame en plusieurs paquets FU-A.
-                    // Supposons que encodedFrame représente une unique NAL unit.
-                    // Le premier octet est le header NAL.
+                    // Fragmentation FU-A (supposant une unique NAL unit)
                     int nalHeader = encodedFrame[0] & 0xFF;
                     int nalType = nalHeader & 0x1F;
-                    // FU indicator : F (bit7) + NRI (bits 6-5) + 28 (FU-A)
-                    int fuIndicator = (nalHeader & 0xE0) | 28;
-                    // Fragmenter à partir de l'octet 1.
+                    int fuIndicator = (nalHeader & 0xE0) | 28; // 28 = FU-A type
                     int offset = 1;
                     boolean firstFragment = true;
                     while (offset < encodedFrame.length) {
                         int remaining = encodedFrame.length - offset;
-                        // On réserve 2 octets pour FU-A header, le reste pour la charge utile.
-                        int payloadSize = Math.min(remaining, MAX_PAYLOAD - 2);
+                        int payloadSize = Math.min(remaining, MAX_PAYLOAD - 2); // 2 octets réservés pour FU header
                         byte[] fuPayload = new byte[2 + payloadSize];
-                        // FU indicator
                         fuPayload[0] = (byte) fuIndicator;
-                        // FU header : S, E, R (bit 7, 6, 5) + original nalType (bits 4-0)
                         int fuHeader = nalType;
                         if (firstFragment) {
-                            fuHeader |= 0x80; // S=1
+                            fuHeader |= 0x80; // Set S bit
                             firstFragment = false;
                         }
                         if (remaining == payloadSize) {
-                            fuHeader |= 0x40; // E=1 pour le dernier fragment
+                            fuHeader |= 0x40; // Set E bit pour le dernier fragment
                         }
                         fuPayload[1] = (byte) fuHeader;
-                        // Copier le fragment de charge utile
                         System.arraycopy(encodedFrame, offset, fuPayload, 2, payloadSize);
-                        // Créer le paquet RTP pour ce fragment.
-                        // Le marker bit est true uniquement pour le dernier fragment.
                         boolean marker = (remaining == payloadSize);
                         byte[] rtpPacket = createRtpPacket(fuPayload, marker);
-                        DatagramPacket packet = new DatagramPacket(rtpPacket, rtpPacket.length, clientAddress, clientPort);
-                        socket.send(packet);
+                        sendInterleavedPacket(rtpPacket);
                         sequenceNumber++;
                         offset += payloadSize;
                     }
-                    timestamp += 90000 / Data.fps;
+                    timestamp += timestampIncrement;
                 }
+            } catch (InterruptedException e) {
+                running = false;
+                Thread.currentThread().interrupt();
             } catch (Exception e) {
                 e.printStackTrace();
                 running = false;

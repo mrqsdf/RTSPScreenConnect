@@ -16,7 +16,7 @@ public class RTSPServer extends Thread {
     private int screenId;
     private int rtpPort; // on utilise ce port comme indicateur du port serveur pour RTP
     private String localIP;
-    private volatile UnicastRtpSender currentSender; // référence au sender en cours
+    private volatile RtspSender currentSender; // référence au sender en cours
     private H264FrameEncoder encoder;
     private ScreenCutter screenCutter;
     private String sessionId = null;
@@ -38,7 +38,7 @@ public class RTSPServer extends Thread {
     @Override
     public void interrupt() {
         if (currentSender != null) {
-            currentSender.interrupt();
+            ((Thread) currentSender).interrupt();
             currentSender = null;
         }
         if (rtspServerSocket != null) {
@@ -133,18 +133,26 @@ public class RTSPServer extends Thread {
                 sessionId = session;
                 boolean exit = false;
                 while (!exit) {
+                    if (clientSocket.isClosed()) {
+                        break;
+                    }
                     String requestLine = in.readLine();
                     if (requestLine == null) break;
                     if (requestLine.trim().isEmpty()) continue;
                     System.out.println("[" + screenId + "] " + requestLine);
 
                     StringTokenizer tokens = new StringTokenizer(requestLine);
+                    if (!tokens.hasMoreTokens()) {
+                        System.out.println("Requête RTSP vide ou mal formée.");
+                        continue;
+                    }
                     String method = tokens.nextToken();
-                    String url = tokens.nextToken();
+
                     // Ignorer la version RTSP
                     Map<String, String> headers = parseHeaders(in);
                     String cseq = headers.getOrDefault("CSeq", "1");
                     String transport = headers.get("Transport");
+                    System.out.println(headers);
 
                     if ("OPTIONS".equals(method)) {
                         String response = "RTSP/1.0 200 OK\r\n" +
@@ -162,6 +170,7 @@ public class RTSPServer extends Thread {
                                 "m=video " + rtpPort + " RTP/AVP 96\r\n" +
                                 "a=rtpmap:96 H264/90000\r\n" +
                                 // Paramètres H264 indicatifs (à ajuster si besoin)
+                                "a=framerate:"+ Data.fps + "\r\n" +
                                 "a=fmtp:96 packetization-mode=1;profile-level-id=42A01E;sprop-parameter-sets=Z0IAKeKQCgC3,aMljiA==\r\n" +
                                 "a=control:trackID=0\r\n";
                         String response = "RTSP/1.0 200 OK\r\n" +
@@ -170,12 +179,43 @@ public class RTSPServer extends Thread {
                                 "Content-Type: application/sdp\r\n" +
                                 "Content-Length: " + sdp.length() + "\r\n\r\n" +
                                 sdp;
+                        System.out.println("Réponse DESCRIBE : " + response);
                         out.write(response);
                         out.flush();
                     } else if ("SETUP".equals(method)) {
-                        // Vérifier si le header Transport contient "client_port"
-                        int clientPort = 0;
-                        if (transport != null && transport.toLowerCase().contains("client_port=")) {
+                        // Vérifier le header Transport pour choisir TCP ou UDP
+                        if (transport != null && transport.toLowerCase().contains("tcp")) {
+                            // Mode TCP interleaved
+                            int rtpChannel = 0;
+                            int idx = transport.toLowerCase().indexOf("interleaved=");
+                            if (idx != -1) {
+                                int start = idx + "interleaved=".length();
+                                int dash = transport.indexOf("-", start);
+                                if (dash != -1) {
+                                    String channelStr = transport.substring(start, dash);
+                                    try {
+                                        rtpChannel = Integer.parseInt(channelStr);
+                                    } catch (NumberFormatException ex) {
+                                        rtpChannel = 0;
+                                    }
+                                }
+                            }
+                            System.out.println("RTP Channel : " + rtpChannel);
+                            System.out.println("Client IP : " + clientSocket.getInetAddress().getHostAddress());
+                            System.out.println("tcp://" + clientSocket.getInetAddress().getHostAddress() + ":" + rtpChannel);
+                            TcpRtpSender tcpSender = new TcpRtpSender(clientSocket, rtpChannel);
+                            tcpSender.start();
+                            currentSender = tcpSender;
+                            // Renvoyer le header Transport tel quel (ou adapté) dans la réponse
+                            String response = "RTSP/1.0 200 OK\r\n" +
+                                    "CSeq: " + cseq + "\r\n" +
+                                    "Session: " + session + "\r\n" +
+                                    "Transport: " + transport + "\r\n\r\n";
+                            out.write(response);
+                            out.flush();
+                        } else if (transport != null && transport.toLowerCase().contains("client_port=")) {
+                            // Mode UDP (existant)
+                            int clientPort = 0;
                             String transportLower = transport.toLowerCase();
                             int idx = transportLower.indexOf("client_port=");
                             if (idx != -1) {
@@ -190,21 +230,25 @@ public class RTSPServer extends Thread {
                                     }
                                 }
                             }
-                        }
-                        if (clientPort > 0) {
-                            String clientIP = clientSocket.getInetAddress().getHostAddress();
-                            // Créer l'expéditeur unicast seulement si non défini
-                            if (currentSender == null) {
-                                currentSender = new UnicastRtpSender(clientIP, clientPort);
-                                currentSender.start();
+                            if (clientPort > 0) {
+                                String clientIP = clientSocket.getInetAddress().getHostAddress();
+                                if (currentSender == null) {
+                                    currentSender = new UnicastRtpSender(clientIP, clientPort);
+                                    ((Thread) currentSender).start();
+                                }
+                                String response = "RTSP/1.0 200 OK\r\n" +
+                                        "CSeq: " + cseq + "\r\n" +
+                                        "Session: " + session + "\r\n" +
+                                        "Transport: RTP/AVP;unicast;destination=" + localIP +
+                                        ";client_port=" + clientPort + ";server_port=" + rtpPort + "\r\n\r\n";
+                                out.write(response);
+                                out.flush();
+                            } else {
+                                String response = "RTSP/1.0 454 Session Not Found\r\n" +
+                                        "CSeq: " + cseq + "\r\n\r\n";
+                                out.write(response);
+                                out.flush();
                             }
-                            String response = "RTSP/1.0 200 OK\r\n" +
-                                    "CSeq: " + cseq + "\r\n" +
-                                    "Session: " + session + "\r\n" +
-                                    "Transport: RTP/AVP;unicast;destination=" + localIP +
-                                    ";client_port=" + clientPort + ";server_port=" + rtpPort + "\r\n\r\n";
-                            out.write(response);
-                            out.flush();
                         } else {
                             String response = "RTSP/1.0 454 Session Not Found\r\n" +
                                     "CSeq: " + cseq + "\r\n\r\n";
@@ -227,6 +271,13 @@ public class RTSPServer extends Thread {
                         playActive = false;
                         currentSender = null;
                         exit = true;
+                    } else if ("GET_PARAMETER".equals(method)) {
+                        // Simple réponse GET_PARAMETER pour indiquer que la session est active.
+                        String response = "RTSP/1.0 200 OK\r\n" +
+                                "CSeq: " + cseq + "\r\n" +
+                                "Session: " + session + "\r\n\r\n";
+                        out.write(response);
+                        out.flush();
                     } else {
                         String response = "RTSP/1.0 200 OK\r\n" +
                                 "CSeq: " + cseq + "\r\n\r\n";

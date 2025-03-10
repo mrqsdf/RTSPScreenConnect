@@ -17,7 +17,7 @@ public class H264FrameEncoder {
     private int height = -1;
     private int frameCount = 0;
     // Taille du GOP : par exemple, 30 frames
-    private int gopSize = Data.fps / 5 / (Data.fps / 15);
+    private int gopSize = 1;//Data.fps / 5 / (Data.fps / 15);
 
     public H264FrameEncoder() {
         encoder = H264Encoder.createH264Encoder();
