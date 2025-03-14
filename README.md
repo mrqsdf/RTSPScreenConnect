@@ -2,7 +2,7 @@
 
 This is a software create by Quentin Kupferlé, Pré-seller Technitien for [Sidev company](https://www.sidev.fr/).
 
-Witch this software you can :
+With this software you can :
 - Create Multi RTSP flux
 - Chose screen to stream
 - Chose custom FPS for stream
